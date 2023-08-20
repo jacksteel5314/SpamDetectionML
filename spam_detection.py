@@ -11,12 +11,13 @@ spam_df = df[["v1", "v2"]]
 def detect(message):
     pd_df = _create_df(message)
     count_vect = CountVectorizer()
+    count_vect.fit_transform(spam_df["v2"])
     X_transformed_train = count_vect.transform(spam_df["v2"])
     X_transformed_test = count_vect.transform(pd_df["v2"])
     ui_mnb = MultinomialNB()
     ui_mnb.fit(X_transformed_train, spam_df["v1"])
     predictions = ui_mnb.predict(X_transformed_test)
-    return predictions
+    return None if len(predictions)==0 else predictions[0]
 
 def _create_df(inputted):
     pd_df = pd.DataFrame(
@@ -26,3 +27,5 @@ def _create_df(inputted):
         }
     )
     return pd_df
+
+

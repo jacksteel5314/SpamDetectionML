@@ -7,7 +7,7 @@ def main():
     '''
     print("Welcome to the Spam Detector.")
     inputted = input("Input a Message: ")
-    print("Our Spam Detection System has determined your message to be " + sd.detect(inputted))
+    print("Our Spam Detection System has determined your message to be " + str(sd.detect(inputted)))
 
 if __name__ == '__main__':
     main()
