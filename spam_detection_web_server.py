@@ -6,6 +6,10 @@ import spam_detection as sd
 app = Flask(__name__)
 
 @app.route("/")
+def welcome():
+    return "<h1>Welcome to the Spam Detection System</h1>"
+
+@app.route("/detect")
 def detect():
     value = request.args.get('message', '')
     if value:
