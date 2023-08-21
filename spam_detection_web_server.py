@@ -11,6 +11,10 @@ def welcome():
 
 @app.route("/detect")
 def detect():
+    value = request.args.get('message', '')
+    if value:
+        result = sd.detect(value)
+        return render_template('success_case.html', message=value, result=result)
     return render_template('input_case.html')
 
 @app.route("/detect/<message>")
