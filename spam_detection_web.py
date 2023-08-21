@@ -9,7 +9,7 @@ app = Flask(__name__)
 def welcome():
     return "<p>Welcome to the Spam Detection System</p>"
 
-@app.route("detect")
+@app.route("/detect")
 def detect():
     return render_template('input_case.html')
 
